@@ -1,117 +1,89 @@
-# speech-to-text
+# 🎙️ Speech-to-Text Application
 
-Real-time transcription using [faster-whisper](https://github.com/guillaumekln/faster-whisper)
+A user-friendly and customizable Speech-to-Text transcription tool with support for multiple models, Voice Activity Detection (VAD), and optional OpenAI API integration for text proofreading.
 
-![architecture](docs/architecture.png)
+---
 
-Accepts audio input from a microphone using a [Sounddevice](https://github.com/spatialaudio/python-sounddevice). By using [Silero VAD](https://github.com/snakers4/silero-vad)(Voice Activity Detection), silent parts are detected and recognized as one voice data. This audio data is converted to text using Faster-Whisper.
+## 📦 Installation
 
-The HTML-based GUI allows you to check the transcription results and make detailed settings for the faster-whisper.
+### ✅ Standard Installation
 
-## Transcription speed
+```bash
+pip install .
+```
 
-If the sentences are well separated, the transcription takes less than a second.
-![TranscriptionSpeed](docs/transcription_speed.png)
+### 🪟 Windows Setup
 
-Large-v2 model  
-Executed with CUDA 11.7 on a NVIDIA GeForce RTX 3060 12GB.
+Simply run the `run.bat` file to automatically perform the following:
 
-## Installation
+1. Create a Python virtual environment
+2. Install required pip packages
+3. Launch the Speech-to-Text application
 
-1. pip install .
+---
 
-### for Windows
+## 🚀 Usage
 
-Please execute "run.bat." It will perform the following actions:
+### Run the Application
 
-1. Create a Python virtual environment.
-1. Install pip packages.
-1. Run speech_to_text.
+```bash
+python -m speech_to_text
+```
 
-## Usage
+### Configuration Steps
 
-1. python -m speech_to_text
-1. Select "App Settings" and configure the settings.
-1. Select "Model Settings" and configure the settings.
-1. Select "Transcribe Settings" and configure the settings.
-1. Select "VAD Settings" and configure the settings.
-1. Start Transcription
+1. Open the application and navigate to **App Settings** to configure general options.
+2. Go to **Model Settings** and choose your desired speech recognition model.
+3. Adjust **Transcribe Settings** for input/output preferences.
+4. Set up **VAD (Voice Activity Detection) Settings** to manage silence detection and segmentation.
+5. Click **Start Transcription** to begin!
 
-If you use the OpenAI API for text proofreading, set OPENAI_API_KEY as an environment variable.
+---
 
-## Notes
+## 🔑 API Integration (Optional)
 
-- If you select local_model in "Model size or path", the model with the same name in the local folder will be referenced.
+If you'd like to enable **text proofreading** using the OpenAI API:
 
-## Demo
+* Set your API key as an environment variable:
 
-![demo](docs/demo.gif)
+```bash
+export OPENAI_API_KEY=your_openai_key_here
+```
 
-## News
+For Windows PowerShell:
 
-### 2023-06-26
+```powershell
+$env:OPENAI_API_KEY="your_openai_key_here"
+```
 
-- Add generate audio files from input sound.
-- Add synchronize audio files with transcription.  
-Audio and text highlighting are linked.
+---
 
-### 2023-06-29
+## 📌 Notes
 
-- Add transcription from audio files.(only wav format)
+* If you select `local_model` under **Model size or path**, the application will use a model with the same name located in your local directory.
 
-### 2023-07-03
+---
 
-- Add Send transcription results from a WebSocket server to a WebSocket client.  
-Example of use: Display subtitles in live streaming.
+## 🧠 Features
 
-### 2023-07-05
+* 🎧 Real-time speech transcription
+* 🗣️ Local and cloud-based model support
+* ✨ OpenAI integration for grammar and clarity improvements
+* 🎛️ Flexible configuration UI for advanced control
+* 🧩 Voice Activity Detection (VAD) for automatic segmentation
 
-- Add generate SRT files from transcription result.
+---
 
-### 2023-07-08
+## 🤝 Contributing
 
-- Add support for mp3, ogg, and other audio files.  
-Depends on Soundfile support.
-- Add setting to include non-speech data in buffer.  
-While this will increase memory usage, it will improve transcription accuracy.
+Contributions, issues, and feature requests are welcome! Feel free to open a pull request or issue.
 
-### 2023-07-09
+---
 
-- Add non-speech threshold setting.
+## 📜 License
 
-### 2023-07-11
+This project is licensed under the [MIT License](LICENSE).
 
-- Add Text proofreading option via OpenAI API.  
-Transcription results can be proofread.
+---
 
-### 2023-07-12
-
-- Add feature where audio and word highlighting are synchronized.  
-if Word Timestamps is true.
-
-### 2023-10-01
-
-- Support for repetition_penalty and no_repeat_ngram_size in transcribe_settings.
-- Updating packages.
-
-### 2023-11-27
-
-- Support "large-v3" model.
-- Update faster-whisper requirement to include the latest version "0.10.0".
-
-### 2024-07-23
-
-- Support "Faster Distil-Whisper" model.
-- Update faster-whisper requirement to include the latest version "1.0.3".
-- Updating packages.
-- Add run.bat for Windows.
-
-## Todo
-
-- [x] Save and load previous settings.
-
-- [x] Use Silero VAD
-
-- [x] Allow local parameters to be set from the GUI.
-
-- [x] Supports additional options in faster-whisper 0.8.0
+Let me know if you'd like to include images, badges (e.g., version, license, Python compatibility), or demo videos.
